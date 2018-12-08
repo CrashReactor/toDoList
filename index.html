@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Index page</title>
+
+    <!-- CSS and Jquery -->
+    <link rel="stylesheet" href="src/css/normalize.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" 
+    	integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" 
+    	crossorigin="anonymous">
+    <link rel="stylesheet" href="src/css/jquery.datetimepicker.css">
+    <link rel="stylesheet" href="src/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="src/library/jquery.datetimepicker.full.min.js"></script>
+
+    <!-- Liibrary -->
+    <script src="src/library/browserShim.js"></script>
+    <!-- Supporting a browser -->
+    <script src="src/library/util.js"></script>
+    <!-- Utility for app -->
+    <script src="src/library/constraint.js"></script>
+    <!-- Defining exception classes -->
+    <script src="src/library/Enumeration.js"></script>
+    <!-- Defining enumeration class -->
+
+    <!-- Model -->
+    <script src="src/MVC/model/Task.js"></script>
+
+    <!-- Controller -->
+    <!-- Defining the app's MVC namespaces -->
+    <script src="src/MVC/controller/myAppSpace.js"></script>
+    <!-- Management CRUD -->
+    <script src="src/MVC/controller/manageTasksController.js"></script>
+    <!-- Create -->
+    <script src="src/MVC/controller/createTaskController.js"></script>
+    <!-- Read -->
+    <script src="src/MVC/controller/listTasksController.js"></script>
+    <!-- Update -->
+    <script src="src/MVC/controller/updateTaskController.js"></script>
+    <!-- Destroy -->
+    <script src="src/MVC/controller/deleteTaskController.js"></script>
+    <!-- Sorting and filtering -->
+    <script src="src/MVC/controller/sortTasksController.js"></script>
+    <!-- Popup -->
+    <script src="src/MVC/controller/popupTaskController.js"></script>
+
+    <!-- View -->
+    <!-- Create -->
+    <script src="src/MVC/view/createTaskView.js"></script>
+    <!-- Read -->
+    <script src="src/MVC/view/listTasksView.js"></script>
+    <!-- Update -->
+    <script src="src/MVC/view/updateTaskView.js"></script>
+    <!-- Destroy -->
+    <script src="src/MVC/view/deleteTaskView.js"></script>
+    <!-- Sorting and filtering -->
+    <script src="src/MVC/view/sortTasksView.js"></script>
+    <!-- Popup -->
+    <script src="src/MVC/view/popupTaskView.js"></script>
+
+    <!-- Initialize app -->
+    <script>
+      window.addEventListener("load", myAppSpace.controller.manageTasks.initialize);
+    </script>
+  </head>
+  <body>
+
+
+
+
+
+
+    <!-- ================================== CREATE TASK ================================== -->
+    <div id="createTask" class="pure-form pure-form-stacked">
+      <h1>Create a task</h1>
+      <form id="Create">
+        <fieldset>
+          <div>
+            <label for="createIsbn">ISBN</label>
+            <input name="createIsbn" id="createIsbn">
+          </div>
+
+          <div>
+            <label for="createTitle">Title</label>
+            <input name="createTitle" id="title">
+          </div>
+
+          <div>
+            <label for="createDescribe">Describe</label>
+            <textarea name="createDescribe" id="createDescribe" cols="" rows=""></textarea>
+            </p>
+          </div>
+
+          <fieldset data-bind="createRange">
+            <legend>Rang of a task</legend>
+            <select id="createRange" name="createRange"></select>
+          </fieldset>
+
+          <fieldset data-bind="createState">
+            <legend>State of a task</legend>
+          </fieldset>
+
+          <div>
+            <label for="withoutDeadline">Without deadline</label>
+            <input type="checkbox" name="withoutDeadline" value="withoutDeadline">
+            <br>
+            <label for="createDeadLine">Deadline:</label>
+            <input id="createDeadLine" name="createDeadLine" type="text">
+          </div>
+
+          <div>
+            <label for="createTime">Time:</label>
+            <input id="createTime" name="createTime" type="text">
+          </div>
+
+          <div>
+            <button class="button-create pure-button" type="submit" name="commit">Create</button>
+            <button class="button-cancel pure-button" type="button" onclick="myAppSpace.view.listTasks.setupUI()">
+              Back to menu
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <!-- ================================== END CREATE TASK ================================== -->
+
+
+
+
+
+
+    <!-- ================================== UPDATE TASK ================================== -->
+    <div id="updateTask" class="pure-form pure-form-stacked">
+      <h1>Update a task</h1>
+      <form id="Update">
+        <fieldset>
+          <div class="pure-control-group">
+            <label for="updateIsbn">ISBN</label>
+            <input name="updateIsbn" id="updateIsbn" readonly="readonly">
+          </div>
+
+          <div class="pure-control-group">
+            <label for="updateTitle">Title</label>
+            <input name="updateTitle" id="updateTitle">
+          </div>
+
+          <div class="pure-control-group">
+            <label for="updateDescribe">Describe</label>
+            <textarea name="updateDescribe" id="updateDescribe" cols="" rows=""></textarea>
+            </p>
+          </div>
+
+          <fieldset data-bind="updateRange">
+            <legend>Rang of a task</legend>
+            <select id="updateRange" name="updateRange"></select>
+          </fieldset>
+
+          <fieldset data-bind="updateState">
+            <legend>State of a task</legend>
+          </fieldset>
+
+          <div class="pure-control-group">
+            <label for="withoutDeadline">Without deadline</label>
+            <input type="checkbox" name="withoutDeadline" value="withoutDeadline">
+            <br>
+            <label for="updateDeadLine">Deadline:</label>
+            <input id="updateDeadLine" name="updateDeadLine" type="text">
+          </div>
+
+          <div class="pure-control-group">
+            <label for="updateTime">Time:</label>
+            <input id="updateTime" name="updateTime" type="text">
+          </div>
+
+          <div class="pure-control-group">
+            <button class="button-update pure-button" type="submit" name="commit">Save update</button>
+            <button class="button-cancel pure-button" type="button" onclick="myAppSpace.view.listTasks.displayPanel()">
+              Back to menu
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <!-- ================================== END UPDATE TASK ================================== -->
+
+
+
+
+
+
+    <!-- ================================== POPUP ================================== -->
+    <div id="popup">
+      <div id="containerPopupData">
+        <h1 id="showTitle"></h1>
+        <h1 id="showDescribe"></h1>
+        <h1 id="showStatus"></h1>
+        <h1 id="showRange"></h1>
+        <h1 id="showDeadline"></h1>
+        <h1 id="showComplited"></h1>
+      </div>
+      <a id="backPopup" href="">Back</a>
+    </div>
+    <!-- ================================== END POPUP ================================== -->
+
+
+
+
+
+
+    <!-- ================================== BUTTONS ================================== -->
+    <div id="containerForHeader">
+      <header>
+        <hgroup>
+          <h4>  My example CRUD</h4>
+          <h1>To-Do List Web-App</h1>
+        </hgroup>
+        <nav>
+          <ul>
+            <li><a href="">ABOUT</a></li>
+            <li><a href="">EXAMPLES</a></li>
+            <li><a href="">DOWNLOAD</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <div id="buttonsControl">
+        <menu>
+          <li>
+            <button id="buttonCreateTask" type="button">
+              <h1>+</h1>
+            </button>
+          </li>
+        </menu>
+      </div>
+    </div>
+    <!-- ================================== END BUTTONS ================================== -->
+
+
+
+
+
+
+
+    <!-- ================================== LIST OF THE TASKS ================================== -->
+    <div id="listOfTasks" class="pure-form pure-form-aligned">
+      <h2>List of all tasks (<span id="numberAllTasks">0</span>)</h2>
+      <div class="filtration">
+        <h3>Filter by </h3>
+        <div class="byStatus pure-form">
+          <h3>status: </h3>
+          <select id="filtrationByStatus">
+            <option value="0">All</option>
+            <option value="1">Inprocess</option>
+            <option value="2">Completed</option>
+            <option value="3">Failed</option>
+          </select>
+        </div>
+        <div class="byRange pure-form">
+          <h3>range: </h3>
+          <select id="filtrationByRange">
+            <option value="0">All</option>
+            <option value="1">Regular</option>
+            <option value="2">Important</option>
+            <option value="3">Very important</option>
+          </select>
+        </div>
+      </div>
+
+      <table id="books" class="pure-table">
+        <thead>
+          <tr>
+            <th>SHOW</th>
+            <th>TITLE</th>
+            <th>
+              <a id="sortByStatus" href="">STATUS &#9660</a>
+            </th>
+            <th>
+              <a id="sortByRange" href="">RANGE &#9660</a>
+            </th>
+            <th>
+              <a id="sortByDeadline" href="">DEADLINE &#9660</a>
+            </th>
+            <th>COMPLITED</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <!-- ================================== END LIST OF THE TASKS ================================== -->
+  </body>
+</html>
